@@ -1,0 +1,51 @@
+<app-head></app-head>
+<div class="slim-mainpanel">
+    <div class="container">
+        <h3 class="display-6 fw-bold text-center">Employee search</h3>
+        <div class="px-4 py-5 my-5 ">
+            <div class="col-lg-6 mx-auto">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Enter employee's ID</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Example: 15" [(ngModel)]="id">
+                </div>
+            </div>
+            <div class="col-lg-6 mx-auto">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <button type="button" class="btn btn-primary btn-lg px-4 gap-3" (click)="getEmployees()">Search</button>
+                </div>
+                <br>
+                <div class="alert alert-info" role="alert" *ngIf="exMessage !== ''">
+                    {{exMessage}}
+                </div>
+            </div>
+            <br>
+            <br>
+            <!-- <div class="col-lg-6 mx-auto"> -->
+            <div class="table-responsive" style="margin-top: 20px;" *ngIf="employees.length > 0">
+                <table class="table table-hover border">
+                    <thead>
+                        <tr class="primary">
+                            <th class="text-center" scope="col">Id</th>
+                            <th class="text-center" scope="col">Name</th>
+                            <th class="text-center" scope="col">Salary</th>
+                            <th class="text-center" scope="col">Age</th>
+                            <th class="text-center" scope="col">Anual Salary</th>
+                            <th class="text-center" scope="col">Photo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of employees">
+                            <th class="text-center">{{item.id}}</th>
+                            <td class="text-center">{{item.employee_name}}</td>
+                            <td class="text-center">{{item.employee_salary | currency}}</td>
+                            <td class="text-center">{{item.employee_age}}</td>
+                            <td class="text-center">{{item.employee_anual_salary | currency}}</td>
+                            <td class="text-center">{{item.profile_image}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
